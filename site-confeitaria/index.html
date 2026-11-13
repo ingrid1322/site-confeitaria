@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão - Mary Bru Doçuras</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://googleapis.com" rel="stylesheet">
+    <script src="supabase.js"></script>
+</head>
+<body>
+
+    <section id="tela-login" class="login-container">
+        <div class="login-box">
+            <h1 class="logo-titulo">Mary Bru Doçuras</h1>
+            <p>Área Restrita de Controle</p>
+            <form id="form-login">
+                <input type="email" id="email-login" placeholder="E-mail de acesso" required>
+                <input type="password" id="senha-login" placeholder="Senha" required>
+                <button type="submit" class="btn-vinho">Entrar no Painel</button>
+            </form>
+            <p id="erro-login" class="mensagem-erro"></p>
+        </div>
+    </section>
+
+    <div id="painel-sistema" class="oculto">
+        <header class="topo-admin">
+            <div class="container header-flex">
+                <h1 class="logo-titulo">Mary Bru Doçuras</h1>
+                <button id="btn-sair" class="btn-sair">Sair</button>
+            </div>
+        </header>
+
+        <main class="container">
+            <section class="resumo-cards">
+                <div class="card-resumo">
+                    <span>Total de Pedidos</span>
+                    <strong id="total-pedidos">0</strong>
+                </div>
+                <div class="card-resumo">
+                    <span>A Entregar (Pendentes)</span>
+                    <strong id="pedidos-pendentes">0</strong>
+                </div>
+                <div class="card-resumo">
+                    <span>Faturamento Total</span>
+                    <strong id="faturamento-total">R$ 0,00</strong>
+                </div>
+            </section>
+
+            <section class="bloco-branco">
+                <h2>Nova Encomenda</h2>
+                <form id="form-encomenda" class="grid-form">
+                    <input type="text" id="cliente" placeholder="Nome do Cliente" required>
+                    <input type="text" id="produto" placeholder="Bolo ou Doce (ex: Bolo 2kg Ninho)" required>
+                    <input type="date" id="data_entrega" required>
+                    <input type="number" id="valor" step="0.01" placeholder="Valor (R$)" required>
+                    <select id="status">
+                        <option value="Pendente">Pendente</option>
+                        <option value="Em Produção">Em Produção</option>
+                        <option value="Entregue">Entregue</option>
+                    </select>
+                    <button type="submit" class="btn-vinho">Salvar Pedido</button>
+                </form>
+            </section>
+
+            <section class="bloco-branco">
+                <h2>Agenda de Encomendas</h2>
+                <div class="tabela-responsiva">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Entrega</th>
+                                <th>Cliente</th>
+                                <th>Pedido</th>
+                                <th>Valor</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="lista-encomendas">
+                            </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
